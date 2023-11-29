@@ -1,0 +1,41 @@
+<th:block th:include="include/header"></th:block>
+<!--Include Navbar-->
+<th:block th:include="include/navbar"></th:block>
+<div class="container">
+  <h2>Technology List</h2>
+  <a href="/admin/technology-add" type="button" class="btn btn-warning mb-4">Add New Technology</a>
+  <table id="table_id" class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="tech: ${technologyList}">
+      <td th:utext="${tech.id}">...</td>
+      <td th:utext="${tech.name}">...</td>
+      <td th:utext="${tech.category}">...</td>
+      <td width="15%"><div class="btn-group" role="group">
+        <a type="button" class="btn btn-warning" th:href="@{/admin/technology-update/id={id}(id=${tech.id})}">Update</a>
+        <a type="button" class="btn btn-danger" th:href="@{/admin/technology-delete/id={id}(id=${tech.id})}">Delete</a>
+      </div></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+  $('#table_id').DataTable();
+</script>
+</body>
+</html>
