@@ -3,6 +3,8 @@ package vn.fptedu.fptprojectlibrary.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import vn.fptedu.fptprojectlibrary.dto.UserDto;
@@ -41,5 +43,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public User userLogin() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        User userLogin = userRepository.findByEmail(currentPrincipalName);
+        return userLogin;
     }
 }

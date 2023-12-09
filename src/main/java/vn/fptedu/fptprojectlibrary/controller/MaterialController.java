@@ -67,9 +67,8 @@ public class MaterialController {
             return "material-add";
         }
         material.setName(material.getName().trim());
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentPrincipalName = authentication.getName();
-        User userLogin = userRepository.findByEmail(currentPrincipalName);
+
+        User userLogin = userService.userLogin();
         material.setPostBy(userLogin.getId());
         materialRepository.save(material);
 
