@@ -18,8 +18,8 @@
     <tr th:each="semester: ${semesterList}">
       <td th:utext="${semester.id}">...</td>
       <td th:utext="${semester.name}">...</td>
-      <td th:utext="${semester.fromDate}">...</td>
-      <td th:utext="${semester.toDate}">...</td>
+      <td th:utext="${#dates.format(semester.fromDate, 'dd-MM-yyyy')}">...</td>
+      <td th:utext="${#dates.format(semester.toDate, 'dd-MM-yyyy')}">...</td>
       <td width="15%"><div class="btn-group" role="group">
         <a type="button" class="btn btn-warning" th:href="@{/admin/semester-update/id={id}(id=${semester.id})}">Update</a>
         <a type="button" class="btn btn-danger" th:href="@{/admin/semester-delete/id={id}(id=${semester.id})}">Delete</a>

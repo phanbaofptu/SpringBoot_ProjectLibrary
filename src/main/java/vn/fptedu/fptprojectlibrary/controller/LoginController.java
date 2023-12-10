@@ -29,6 +29,7 @@ public class LoginController {
         return "access-denied";
     }
 
+
     @RequestMapping("/login")
     public String loginForm() {
         return "login";

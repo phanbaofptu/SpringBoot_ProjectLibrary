@@ -1,0 +1,52 @@
+<th:block th:include="include/header"></th:block>
+<!--Include Navbar-->
+<th:block th:include="include/navbar"></th:block>
+<div class="container">
+  <h2 th:text="${type}"></h2>
+  <a href="/teacher/group-add" type="button" class="btn btn-warning mb-4">Add New Group</a>
+  <a href="/teacher/group-manager/all" type="button" class="btn btn-primary mb-4">All Group</a>
+  <a href="/teacher/group-manager" type="button" class="btn btn-primary mb-4">My Group</a>
+  <table id="table_id" class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Semester</th>
+      <th scope="col">Mentor</th>
+      <th scope="col">Leader</th>
+      <th scope="col">Member</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="group: ${groupList}">
+      <td th:utext="${group.name}">...</td>
+      <td th:utext="${group.semester.name}">...</td>
+      <td th:utext="${group.mentor.username}">...</td>
+      <td th:utext="${group.leader.username}">...</td>
+
+      <td>
+        <span th:each="member: ${group.members}" class="badge text-bg-primary ms-1" th:utext="${member.username}"></span>
+      </td>
+      <td width="20%">
+        <a type="button" class="btn btn-primary" th:href="@{/teacher/group-view-detail/id={id}(id=${group.id})}">Detail</a>
+        <div class="btn-group" role="group">
+        <a type="button" class="btn btn-warning" th:href="@{/teacher/group-update/id={id}(id=${group.id})}">Update</a>
+        <a type="button" class="btn btn-danger" th:href="@{/teacher/group-delete/id={id}(id=${group.id})}">Delete</a>
+      </div></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+  $('#table_id').DataTable();
+</script>
+</body>
+</html>

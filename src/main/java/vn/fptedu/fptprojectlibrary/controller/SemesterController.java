@@ -7,23 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import vn.fptedu.fptprojectlibrary.dto.UserDto;
-import vn.fptedu.fptprojectlibrary.model.Role;
 import vn.fptedu.fptprojectlibrary.model.Semester;
-import vn.fptedu.fptprojectlibrary.model.User;
 import vn.fptedu.fptprojectlibrary.repository.RoleRepository;
 import vn.fptedu.fptprojectlibrary.repository.SemesterRepository;
 import vn.fptedu.fptprojectlibrary.repository.UserRepository;
 import vn.fptedu.fptprojectlibrary.service.UserService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
-public class AdminSemesterController {
+public class SemesterController {
     @Autowired
     private UserRepository userRepository;
     @Autowired

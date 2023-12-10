@@ -19,13 +19,21 @@ public class Technology {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true)
-    private String name;
     @Column(nullable = false)
+    private String name;
+    @Column(nullable = false,unique = true)
     private String category;
+
+    @ManyToMany(mappedBy = "technologies")
+    private List<Project> projects = new ArrayList<>();
+
 
     public Technology(String name, String category) {
         this.name = name;
         this.category = category;
+    }
+
+    public Technology(String name) {
+        this.name = name;
     }
 }

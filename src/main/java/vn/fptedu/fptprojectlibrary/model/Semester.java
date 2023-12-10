@@ -23,9 +23,9 @@ public class Semester {
     @Column(nullable = false, unique = true)
     private String name;
     @Column(nullable = false)
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
     private Date fromDate;
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
     @Column(nullable = false)
     private Date toDate;
 

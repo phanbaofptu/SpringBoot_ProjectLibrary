@@ -38,7 +38,15 @@ public class User {
     )
     private List<Role> roles = new ArrayList<>();
 
-    public User( String name, String username, String email, String password, String studentId, List<Role> roles) {
+//    @ManyToOne()
+//    private Group group;
+
+    @ManyToOne
+    @JoinColumn(name="group_id")
+    private Group group;
+
+
+    public User(String name, String username, String email, String password, String studentId, List<Role> roles) {
         this.name = name;
         this.username = username;
         this.email = email;
@@ -46,8 +54,5 @@ public class User {
         this.studentId = studentId;
         this.roles = roles;
     }
-
-
-
 
 }
