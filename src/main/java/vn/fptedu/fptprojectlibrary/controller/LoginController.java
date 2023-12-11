@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import vn.fptedu.fptprojectlibrary.dto.UserDto;
 import vn.fptedu.fptprojectlibrary.model.User;
+import vn.fptedu.fptprojectlibrary.repository.ProjectRepository;
 import vn.fptedu.fptprojectlibrary.service.UserService;
 
 @Controller
@@ -19,8 +20,13 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ProjectRepository projectRepository;
     @RequestMapping("/")
-    public String welcome() {
+    public String welcome(Model model) {
+        model.addAttribute("userLogin", userService.userLogin());
+        model.addAttribute("projectList", projectRepository.findProjectByStatus("approved"));
         return "index";
     }
 

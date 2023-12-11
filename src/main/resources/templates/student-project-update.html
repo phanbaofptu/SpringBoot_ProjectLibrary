@@ -1,10 +1,10 @@
 <th:block th:include="include/header"></th:block>
 <th:block th:include="include/navbar"></th:block>
 <div class="container">
-    <h1>Register New Project</h1>
+    <h2 th:text="'Update: '+${project.name}"></h2>
     <div th:if="${param.success}">
         <div class="alert alert-primary">
-            Register New Project Successfully !!!
+            Update Project Successfully !!!
         </div>
     </div>
     <div th:if="${param.error}">
@@ -16,7 +16,7 @@
     <form
             method="post"
             role="form"
-            th:action="@{/student/register-project}"
+            th:action="@{/student/project-update/id={id}(id=${project.id})}"
             th:object="${project}"
             class="row g-2"
     >

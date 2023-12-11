@@ -24,7 +24,7 @@ public class Project {
     private String name;
     @Column( columnDefinition = "text")
     private String description;
-    @Column( columnDefinition = "nvarchar(10)")
+    @Column( columnDefinition = "nvarchar(20)")
     private String status;
     @Column(columnDefinition = "text")
     private String comment;

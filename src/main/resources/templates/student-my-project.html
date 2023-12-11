@@ -25,13 +25,17 @@
         <span class="badge text-bg-primary" th:if="${project?.status.equals('new')}" th:utext="${project?.status}"></span>
         <span class="badge text-bg-danger" th:if="${project?.status.equals('rejected')}" th:utext="${project?.status}"></span>
         <span class="badge text-bg-success" th:if="${project?.status.equals('approved')}" th:utext="${project?.status}"></span>
-
+        <span class="badge text-bg-warning" th:if="${project?.status.equals('in-processing')}" th:text="${project?.status}"></span>
       </td>
       <td th:utext="${#dates.format(project.dateRegister, 'dd-MM-yyyy HH:mm:ss')}">...</td>
       <td th:utext="${#dates.format(project?.dateStatus, 'dd-MM-yyyy HH:mm:ss')}">...</td>
 
-      <td >
-        <a type="button" class="btn btn-primary" th:href="@{/student/project-view-detail/id={id}(id=${project.id})}">Detail</a>
+      <td max-width="20%">
+        <a type="button" class="btn btn-primary mb-1" th:href="@{/student/project-detail/id={id}(id=${project.id})}">Detail</a>
+        <div class="btn-group  mb-1" role="group">
+          <a type="button" class="btn btn-warning" th:if="${project?.status.equals('new') || project?.status.equals('in-processing')}" th:href="@{/student/project-update/id={id}(id=${project.id})}">Update</a>
+          <a type="button" class="btn btn-danger" th:if="${project?.status.equals('new')}" th:href="@{/student/project-delete/id={id}(id=${project.id})}">Delete</a>
+        </div>
       </td>
     </tr>
     </tbody>

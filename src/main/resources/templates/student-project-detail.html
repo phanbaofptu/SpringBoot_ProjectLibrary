@@ -1,0 +1,93 @@
+<th:block th:include="include/header"></th:block>
+<!--Include Navbar-->
+<th:block th:include="include/navbar"></th:block>
+<div class="container">
+    <h2 th:text="${project.name}"></h2>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">Group</th>
+            <th scope="col">Leader</th>
+            <th scope="col">Mentor</th>
+            <th scope="col">Status</th>
+            <th scope="col">Register Date</th>
+            <th scope="col">Response Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${project?.group.name}">...</td>
+            <td th:text="${project?.group.leader.username}">...</td>
+            <td th:text="${project?.group.mentor.username}">...</td>
+            <td>
+                <span class="badge text-bg-primary" th:if="${project?.status.equals('new')}"
+                      th:text="${project?.status}"></span>
+                <span class="badge text-bg-danger" th:if="${project?.status.equals('rejected')}"
+                      th:text="${project?.status}"></span>
+                <span class="badge text-bg-success" th:if="${project?.status.equals('approved')}"
+                      th:text="${project?.status}"></span>
+                <span class="badge text-bg-warning" th:if="${project?.status.equals('in-processing')}"
+                      th:text="${project?.status}"></span>
+
+            </td>
+            <td th:text="${#dates.format(project.dateRegister, 'dd-MM-yyyy HH:mm:ss')}">...</td>
+            <td th:text="${#dates.format(project?.dateStatus, 'dd-MM-yyyy HH:mm:ss')}">...</td>
+
+
+        </tr>
+        </tbody>
+    </table>
+    <div class="row ">
+        <div class="col-md-8 mb-4">
+            <div class="mb-3">
+                <h5 for="description" class="form-label">Description</h5>
+                <textarea class="form-control" id="description" rows="15" th:text="${project.description}" disabled></textarea>
+            </div>
+            <div class="mb-3">
+                <h5 for="comment" class="form-label">Comment by Mentor <small th:if="${project.dateStatus}"><mark th:text="${#dates.format(project?.dateStatus, 'dd-MM-yyyy HH:mm:ss')}"></mark></small></h5>
+                <textarea class="form-control" id="comment" rows="10" th:if="${project.comment}" th:text="${project.comment}" disabled></textarea>
+                <div class="alert alert-primary" role="alert" th:if="${project.comment == null}">
+                   No comments! Waiting mentor...
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <h5>Technology</h5>
+            <div class="mb-3">
+            <span th:each="tech: ${project.technologies}">
+                <span class="badge text-bg-warning" th:utext="${tech.name}"></span>
+            </span>
+            </div>
+            <h5>Team Member</h5>
+            <div class="col mb-2" th:each="team: ${project.group.members}">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title" th:utext="${team.name}"></h5>
+                        <div class="card-text">
+                            <i class="bi bi-person"></i> <span th:utext="${team.username}"></span><br>
+                            <i class="bi bi-card-heading"></i> <span th:utext="${team.studentId}"></span><br>
+                            <i class="bi bi-envelope-at"></i> <span><a th:href="'mailto:'+${team.email}"
+                                                                       th:utext="${team.email}"></a></span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $('#table_id').DataTable();
+</script>
+</body>
+</html>
