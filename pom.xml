@@ -10,7 +10,7 @@
     </parent>
     <groupId>vn.fptedu</groupId>
     <artifactId>FPTProjectLibrary</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1</version>
     <name>FPTProjectLibrary</name>
     <description>FPTProjectLibrary</description>
     <properties>
