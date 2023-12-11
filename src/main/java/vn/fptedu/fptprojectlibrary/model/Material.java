@@ -12,31 +12,29 @@ import vn.fptedu.fptprojectlibrary.dto.UserDto;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "material")
 public class Material {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, columnDefinition = "nvarchar(MAX)")
+    @Column(nullable = false, columnDefinition = "text")
     private String name;
-    @Column( columnDefinition = "nvarchar(MAX)")
+    @Column( columnDefinition = "text")
     private String description;
-    @Column( columnDefinition = "nvarchar(MAX)")
+    @Column( columnDefinition = "text")
     private String fileName;
-    @Column(columnDefinition = "varchar(MAX)")
+    @Column(columnDefinition = "text")
     private String fileUrl;
 
-    @JoinColumn(name = "postBy", insertable = false, updatable = false)
+    @JoinColumn( insertable = false, updatable = false)
     @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
-    private User postByUser;
+    private User user;
 
-    @Column(name = "postBy")
+    @Column(name="user_id")
     private long postBy;
 
 
-
-    public void setPostByUser(User postByUser) {
-        setPostBy(postByUser.getId());
-        this.postByUser = postByUser;
+    public void setUser(User user) {
+        setPostBy(user.getId());
+        this.user = user;
     }
 }

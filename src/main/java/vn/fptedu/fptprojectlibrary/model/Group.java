@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "groups")
+@Table(name = "groupdb")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,32 +22,28 @@ public class Group {
     @Column(nullable = false, columnDefinition = "nvarchar(255)")
     private String name;
 
-    @JoinColumn(name = "mentor", insertable = false, updatable = false)
+    @JoinColumn( insertable = false, updatable = false)
     @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
     private User mentor;
 
-    @Column(name = "mentor")
+    @Column(name = "mentor_id")
     private long mentorId;
 
-    @JoinColumn(name = "semester", insertable = false, updatable = false)
+    @JoinColumn(insertable = false, updatable = false)
     @ManyToOne(targetEntity = Semester.class, fetch = FetchType.LAZY)
     private Semester semester;
 
-    @Column(name = "semester")
+    @Column(name = "semester_id")
     private long semesterId;
 
-    @JoinColumn(name = "leader", insertable = false, updatable = false)
+    @JoinColumn( insertable = false, updatable = false)
     @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
     private User leader;
 
-    @Column(name = "leader")
+    @Column(name = "leader_id")
     private long leaderId;
 
-//    @OneToMany()
-//    @JoinColumn(name="member")
-//    private List<User> members = new ArrayList<>();
-
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "groups")
     private List<User> members = new ArrayList<>();
 
 

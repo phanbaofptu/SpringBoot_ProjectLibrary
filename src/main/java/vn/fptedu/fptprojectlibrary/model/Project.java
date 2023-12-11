@@ -16,25 +16,24 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "project")
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, columnDefinition = "nvarchar(MAX)")
+    @Column(nullable = false, columnDefinition = "text")
     private String name;
-    @Column( columnDefinition = "nvarchar(MAX)")
+    @Column( columnDefinition = "text")
     private String description;
     @Column( columnDefinition = "nvarchar(10)")
     private String status;
-    @Column(columnDefinition = "nvarchar(MAX)")
+    @Column(columnDefinition = "text")
     private String comment;
 
-    @JoinColumn(name = "groups", insertable = false, updatable = false)
+    @JoinColumn( insertable = false, updatable = false)
     @ManyToOne(targetEntity = Group.class, fetch = FetchType.LAZY)
     private Group group;
 
-    @Column(name = "groups")
+    @Column(name = "group_id")
     private long groupId;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

@@ -14,14 +14,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "technology")
 public class Technology {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     private String category;
 
     @ManyToMany(mappedBy = "technologies")

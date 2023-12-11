@@ -15,18 +15,17 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "semester")
 public class Semester {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
     private String name;
-    @Column(nullable = false)
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
+    @Column(nullable = true)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fromDate;
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
-    @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(nullable = true)
     private Date toDate;
 
     public Semester(String name, Date fromDate, Date toDate) {

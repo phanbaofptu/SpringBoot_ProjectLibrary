@@ -14,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users")
 public class User {
 
     @Id
@@ -43,7 +42,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name="group_id")
-    private Group group;
+    private Group groups;
 
 
     public User(String name, String username, String email, String password, String studentId, List<Role> roles) {

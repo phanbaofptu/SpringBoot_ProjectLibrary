@@ -46,7 +46,7 @@ public class ProjectController {
             return "student-register-project";
         }
         project.setName(project.getName().trim());
-        project.setGroup(userService.userLogin().getGroup());
+        project.setGroup(userService.userLogin().getGroups());
         project.setStatus("new");
         ZoneId zone = ZoneId.of("Asia/Ho_Chi_Minh");
         ZonedDateTime now = ZonedDateTime.now(zone);
@@ -59,7 +59,7 @@ public class ProjectController {
     @GetMapping("/student/my-project")
     public String myProject(Model model) {
         User userLogin = userService.userLogin();
-        List<Project> projectList = projectRepository.findProjectByGroupId(userLogin.getGroup().getId());
+        List<Project> projectList = projectRepository.findProjectByGroupId(userLogin.getGroups().getId());
         model.addAttribute("projectList", projectList);
         return "student-my-project";
     }

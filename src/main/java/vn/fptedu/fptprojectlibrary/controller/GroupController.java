@@ -74,8 +74,8 @@ public class GroupController {
         User userLogin = userService.userLogin();
         group.setMentorId(userLogin.getId());
         for (User member : group.getMembers()) {
-            if (member.getGroup()==null){
-                member.setGroup(group);
+            if (member.getGroups()==null){
+                member.setGroups(group);
             }
             else {
                 model.addAttribute("message","User "+ member.getUsername() +" have Groups");
@@ -107,11 +107,11 @@ public class GroupController {
         }
         Group oldGroup = groupRepository.findById(id).get();
         for (User member : oldGroup.getMembers()) {
-            member.setGroup(null);
+            member.setGroups(null);
         }
         for (User member : group.getMembers()) {
-            if (member.getGroup()==null){
-                member.setGroup(group);
+            if (member.getGroups()==null){
+                member.setGroups(group);
             }
             else {
                 model.addAttribute("message","User "+ member.getUsername() +" have Groups");
@@ -130,7 +130,7 @@ public class GroupController {
         Group group = groupRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid group Id:" + id));
         for (User member : group.getMembers()) {
-            member.setGroup(null);
+            member.setGroups(null);
         }
         userRepository.saveAll(group.getMembers());
         groupRepository.delete(group);
@@ -140,7 +140,7 @@ public class GroupController {
     @GetMapping("/student/my-group")
     public String myGroup(Model model) {
         User userLogin = userService.userLogin();
-        model.addAttribute("group", userLogin.getGroup());
+        model.addAttribute("group", userLogin.getGroups());
         return "student-my-group";
     }
 
