@@ -1,15 +1,15 @@
-FROM ubuntu:latest AS build
+#
+# Build stage
+#
+FROM maven:3.6.0-jdk-11-slim AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
 
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
-COPY . .
-
-RUN ./gradlew bootJar --no-daemon
-
-FROM openjdk:17-jdk-slim
-
+#
+# Package stage
+#
+FROM openjdk:11-jre-slim
+COPY --from=build /home/app/target/FPTProjectLibrary-0.0.1.jar /usr/local/lib/FPTProjectLibrary.jar
 EXPOSE 8080
-
-COPY --from=build /build/libs/FPTProjectLibrary-1.jar app.jar
-
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java","-jar","/usr/local/lib/FPTProjectLibrary.jar"]
