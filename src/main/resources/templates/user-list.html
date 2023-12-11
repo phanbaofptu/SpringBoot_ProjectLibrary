@@ -31,7 +31,7 @@
       </div></td>
     </tr>
     </tbody>
-  </table>
+  </div>
 </div>
 
 
@@ -42,7 +42,9 @@
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
 <script>
-  $('#table_id').DataTable();
+  $('#table_id').DataTable({
+    responsive: true
+  });
 </script>
 </body>
 </html>
