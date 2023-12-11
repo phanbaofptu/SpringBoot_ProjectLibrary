@@ -1,14 +1,8 @@
-# Fetching latest version of Java
-FROM openjdk:18
+FROM maven:3.8.5-openjdk-17 AS build
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Setting up work directory
-WORKDIR /app
-
-# Copy the jar file into our app
-COPY ./target/FPTProjectLibrary-0.0.1.jar /app
-
-# Exposing port 8080
+FROM openjdk:17.0.1-jdk-slim
+COPY --from=build /target/FPTProjectLibrary-0.0.1-SNAPSHOT.jar FPTProjectLibrary.jar
 EXPOSE 8080
-
-# Starting the application
-CMD ["java", "-jar", "FPTProjectLibrary-0.0.1.jar"]
+ENTRYPOINT ["java","-jar","FPTProjectLibrary.jar"]
