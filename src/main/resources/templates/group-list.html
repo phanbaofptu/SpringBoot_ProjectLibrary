@@ -1,6 +1,6 @@
-<th:block th:include="include/header"></th:block>
+<th:block th:insert="~{include/header}"></th:block>
 <!--Include Navbar-->
-<th:block th:include="include/navbar"></th:block>
+<th:block th:insert="~{include/navbar}"></th:block>
 <div class="container">
     <h2 th:text="${type}"></h2>
     <a href="/teacher/group-add" type="button" class="btn btn-warning mb-4">Add New Group</a>
@@ -40,6 +40,6 @@
     </table>
 </div>
 
-<th:block th:include="include/footer"></th:block>
+<th:block th:insert="~{include/footer}"></th:block>
 </body>
 </html>

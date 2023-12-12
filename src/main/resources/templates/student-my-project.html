@@ -1,6 +1,6 @@
-<th:block th:include="include/header"></th:block>
+<th:block th:insert="~{include/header}"></th:block>
 <!--Include Navbar-->
-<th:block th:include="include/navbar"></th:block>
+<th:block th:insert="~{include/navbar}"></th:block>
 <div class="container">
     <h2>Account List</h2>
     <a href="/student/register-project" type="button" class="btn btn-warning mb-4">Register Project</a>
@@ -51,7 +51,7 @@
 </div>
 
 
-<th:block th:include="include/footer"></th:block>
+<th:block th:insert="~{include/footer}"></th:block>
 
 </body>
 </html>

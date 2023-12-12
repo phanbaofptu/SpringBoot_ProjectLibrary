@@ -1,6 +1,6 @@
-<th:block th:include="include/header"></th:block>
+<th:block th:insert="~{include/header}"></th:block>
 <!--Include Navbar-->
-<th:block th:include="include/navbar"></th:block>
+<th:block th:insert="~{include/navbar}"></th:block>
 <div class="container">
     <div class="alert alert-danger" role="alert">User <span sec:authentication="principal.username"/> have <span
             sec:authentication="principal.authorities"/> cannot access!
@@ -8,7 +8,7 @@
 
 </div>
 
-<th:block th:include="include/footer"></th:block>
+<th:block th:insert="~{include/footer}"></th:block>
 
 </body>
 </html>

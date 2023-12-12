@@ -1,6 +1,6 @@
-<th:block th:include="include/header"></th:block>
+<th:block th:insert="~{include/header}"></th:block>
 <!--Include Navbar-->
-<th:block th:include="include/navbar"></th:block>
+<th:block th:insert="~{include/navbar}"></th:block>
 <div class="container">
     <h2 th:text="${type}"></h2>
     <a href="/teacher/project-manager/all" type="button" class="btn btn-primary mb-4">All Group</a>
@@ -45,7 +45,7 @@
 </div>
 
 
-<th:block th:include="include/footer"></th:block>
+<th:block th:insert="~{include/footer}"></th:block>
 
 </body>
 </html>

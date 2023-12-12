@@ -1,5 +1,5 @@
-<th:block th:include="include/header"></th:block>
-<th:block th:include="include/navbar"></th:block>
+<th:block th:insert="~{include/header}"></th:block>
+<th:block th:insert="~{include/navbar}"></th:block>
 <div class="container">
     <div class="row">
         <div class="col-md-6 mx-auto">
@@ -42,6 +42,6 @@
 </div>
 
 
-<th:block th:include="include/footer"></th:block>
+<th:block th:insert="~{include/footer}"></th:block>
 </body>
 </html>
