@@ -35,7 +35,7 @@ Student
 
 ## Screenshots
 
-![App Screenshot](https://res.cloudinary.com/durry5i8s/image/upload/v1702403615/FPTU%20Library/amwdotpo4wpfu72jsawn.png)
+![App Screenshot]([https://res.cloudinary.com/durry5i8s/image/upload/v1702403615/FPTU%20Library/amwdotpo4wpfu72jsawn.png]
 
 
 [Visit the demo link for more details](https://fpt-project.onrender.com/)
