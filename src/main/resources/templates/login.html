@@ -1,54 +1,82 @@
-<!doctype html>
-<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+<th:block th:include="include/header"></th:block>
+<style>
+    body {
+        background-image: url("https://dangky.fpt.edu.vn/dang-nhap/images/campus.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
 
-    <title>Login</title>
-</head>
-<body>
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-md-4 mx-auto">
-            <h3>FPT University Project Library</h3>
-            <h3>For SWP391 Course</h3>
-            <div th:if="${param.error}">
-                <div class="alert alert-danger">Invalid Email or Password !!!</div>
+    }
+</style>
+<section class="background-radial-gradient overflow-hidden">
+    <style>
+
+        .bg-glass {
+            background-color: hsla(0, 0%, 100%, 0.9) !important;
+            backdrop-filter: saturate(200%) blur(25px);
+        }
+    </style>
+
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+        <div class="row gx-lg-5 align-items-center mb-5">
+            <div class="col-lg-4 mb-4 mb-lg-0" style="z-index: 10">
+
             </div>
-            <div th:if="${param.logout}">
-                <div class="alert alert-success">You have been logged out !!!</div>
+
+            <div class="col-lg-4 mb-4 mb-lg-0 position-relative">
+                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+                <div class="card bg-glass">
+                    <div class="card-body px-3 py-3 px-md-3">
+                        <div style="width: 40%" class="mx-auto mb-4 mt-3">
+                            <img class="img-fluid"
+                                 src="https://cdn.haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png"
+                            <br>
+                        </div>
+
+                        <form method="post"
+                              role="form"
+                              th:action="@{/login}"
+                        >
+                            <div class="form-floating mb-4">
+                                <input class="form-control" id="username" name="username"
+                                       placeholder="Email"
+                                       type="email">
+                                <label class="form-label" for="username">Email</label>
+
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input class="form-control" id="password" name="password" placeholder="Password"
+                                       type="password">
+                                <label class="form-label" for="password">Password</label>
+
+                            </div>
+
+
+                            <!-- Submit button -->
+                            <div class="d-grid">
+                                <button type="submit" style="background-color: #f27124;color: white;" class="btn  btn-block mb-4">
+                                    Login
+                                </button>
+                            </div>
+
+                            <div th:if="${param.error}">
+                                <div class="alert alert-danger">Invalid Email or Password !!!</div>
+                            </div>
+                            <div th:if="${param.logout}">
+                                <div class="alert alert-success">You have been logged out !!!</div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
             </div>
-            <form
-                    class="form-horizontal"
-                    method="post"
-                    role="form"
-                    th:action="@{/login}"
-            >
-                <div class="mb-3">
-                    <label class="form-label" for="password">Email</label>
-                    <input class="form-control" id="username" name="username" placeholder="Enter email address"
-                           type="email">
-                </div>
-                <div class="mb-3">
-                    <label class="col-sm-2 col-form-label" for="password">Password</label>
-                    <input class="form-control" id="password" name="password" placeholder="Enter password"
-                           type="password">
-                </div>
-                <div class="mb-3">
-                    <button class="btn btn-primary mb-3" type="submit">Login</button>
-<!--                    or <a class="link-primary" th:href="@{/registration}">Register</a>-->
-                </div>
-            </form>
         </div>
     </div>
-</div>
+</section>
+<!-- Section: Design Block -->
 
-
-<script crossorigin="anonymous"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<th:block th:include="include/footer"></th:block>
 </body>
 </html>

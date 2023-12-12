@@ -1,46 +1,45 @@
 <th:block th:include="include/header"></th:block>
 <th:block th:include="include/navbar"></th:block>
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <form
-              method="post"
-              role="form"
-              th:action="@{/admin/technology-add}"
-              th:object="${technology}"
-      >
-        <h1>Add New Technology</h1>
-        <div th:if="${param.success}">
-          <div class="alert alert-primary">
-            Add New Technology Successfully !!!
-          </div>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form
+                    method="post"
+                    role="form"
+                    th:action="@{/admin/technology-add}"
+                    th:object="${technology}"
+            >
+                <h1>Add New Technology</h1>
+                <div th:if="${param.success}">
+                    <div class="alert alert-primary">
+                        Add New Technology Successfully !!!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" id="name" th:field="*{name}" type="text" required>
+                    <p class="text-danger" th:errors="*{name}"
+                       th:if="${#fields.hasErrors('name')}"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="category">Category</label>
+                    <select class="form-select" th:field="*{category}" id="category">
+                        <option th:value="'Front-End'" th:text="Front-End"></option>
+                        <option th:value="'Back-End'" th:text="Back-End"></option>
+                        <option th:value="'Deployment'" th:text="Deployment"></option>
+                    </select>
+                    <p class="text-danger" th:errors="*{category}"
+                       th:if="${#fields.hasErrors('category')}"></p>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary mb-3" type="submit">Submit</button>
+                </div>
+            </form>
         </div>
-        <div class="mb-3">
-          <label class="form-label" for="name">Name</label>
-          <input class="form-control" id="name" th:field="*{name}" type="text" required>
-          <p class="text-danger" th:errors="*{name}"
-             th:if="${#fields.hasErrors('name')}"></p>
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="category">Category</label>
-          <select class="form-select" th:field="*{category}" id="category">
-            <option th:value="'Front-End'" th:text="Front-End"></option>
-            <option th:value="'Back-End'" th:text="Back-End"></option>
-            <option th:value="'Deployment'" th:text="Deployment"></option>
-          </select>
-          <p class="text-danger" th:errors="*{category}"
-             th:if="${#fields.hasErrors('category')}"></p>
-        </div>
-
-        <div class="mb-3">
-          <button class="btn btn-primary mb-3" type="submit">Submit</button>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<th:block th:include="include/footer"></th:block>
 </body>
 </html>
